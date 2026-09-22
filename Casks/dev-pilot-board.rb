@@ -10,10 +10,9 @@ cask "dev-pilot-board" do
   app "dev-pilot-board-#{version}/Dev Pilot Board.app"
 
   caveats <<~EOS
-    This is an unsigned test build — install with:
-      brew install --cask --no-quarantine dev-pilot-board
-    (or clear quarantine after install:
-      xattr -dr com.apple.quarantine "/Applications/Dev Pilot Board.app")
+    This is an unsigned test build. If macOS blocks the app on first open,
+    clear the quarantine flag once:
+      xattr -dr com.apple.quarantine "/Applications/Dev Pilot Board.app"
 
     On first launch, click "Set up hooks" in the app to connect
     Claude Code and Copilot CLI, then restart any running agent sessions.

@@ -2,7 +2,8 @@
 
 ```bash
 brew tap imyuvii/tap
-brew install --cask --no-quarantine dev-pilot-board
+brew trust --cask imyuvii/tap/dev-pilot-board   # Homebrew 7+ requires trusting third-party casks
+brew install --cask dev-pilot-board
 ```
 
 | Cask | Description |
