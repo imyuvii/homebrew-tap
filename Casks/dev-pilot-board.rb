@@ -9,11 +9,15 @@ cask "dev-pilot-board" do
 
   app "dev-pilot-board-#{version}/Dev Pilot Board.app"
 
-  caveats <<~EOS
-    This is an unsigned test build. If macOS blocks the app on first open,
-    clear the quarantine flag once:
-      xattr -dr com.apple.quarantine "/Applications/Dev Pilot Board.app"
+  # Unsigned test build: clear the quarantine flag at install time so
+  # Gatekeeper's "could not verify" dialog never appears.
+  postflight do
+    system_command "/usr/bin/xattr",
+                   args: ["-dr", "com.apple.quarantine", "#{appdir}/Dev Pilot Board.app"],
+                   sudo: false
+  end
 
+  caveats <<~EOS
     On first launch, click "Set up hooks" in the app to connect
     Claude Code and Copilot CLI, then restart any running agent sessions.
   EOS
