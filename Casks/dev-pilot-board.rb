@@ -1,6 +1,6 @@
 cask "dev-pilot-board" do
-  version "0.3.1"
-  sha256 "597026dc941c80e2806bcf72f0fadf887e5caa5a3d92362e734ed59b9fb17b72"
+  version "0.3.2"
+  sha256 "9ee474538d158ffa007cced02e6fe0e1af83848c0424ff22af80fca5fe910668"
 
   url "https://github.com/imyuvii/dev-pilot-board/releases/download/v#{version}/dev-pilot-board-#{version}.zip"
   name "Dev Pilot Board"
