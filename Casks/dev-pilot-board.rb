@@ -7,14 +7,16 @@ cask "dev-pilot-board" do
   desc "Menu-bar status board for Claude Code and GitHub Copilot CLI sessions"
   homepage "https://github.com/imyuvii/dev-pilot-board"
 
+  depends_on :macos
+
   app "dev-pilot-board-#{version}/Dev Pilot Board.app"
 
   # Unsigned test build: clear the quarantine flag at install time so
   # Gatekeeper's "could not verify" dialog never appears.
-  postflight do
-    system_command "/usr/bin/xattr",
-                   args: ["-dr", "com.apple.quarantine", "#{appdir}/Dev Pilot Board.app"],
-                   sudo: false
+  postflight_steps do
+    run "/usr/bin/xattr",
+        args:         ["-dr", "com.apple.quarantine", "{{appdir}}/Dev Pilot Board.app"],
+        must_succeed: false
   end
 
   caveats <<~EOS
